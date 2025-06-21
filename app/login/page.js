@@ -9,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     if (status === "authenticated" && session?.user?.name) {
-      router.push(`/${session.user.name}`);
+      router.push(`/SinhagadInstitude`);
     }
   }, [session, status, router]);
   return (
