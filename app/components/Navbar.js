@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
 const Navbar = () => {
-  const { data: session } = useSession();
+const { data: session } = useSession();
+const auth = session?.auth; // ✅ safe
   const [showdropdown, setShowDropdown] = useState(false);
   const router = useRouter();
   return (

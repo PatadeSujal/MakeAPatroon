@@ -2,13 +2,16 @@
 import { useSession, signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
 import React from "react";
-
+import { useEffect } from "react";
 const Login = () => {
- const { data: session } = useSession();
- const router = useRouter();
- if(session){
-  router.push(`/${session.user.name}`);
- }
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated" && session?.user?.name) {
+      router.push(`/${session.user.name}`);
+    }
+  }, [session, status, router]);
   return (
     <div className="w-full max-w-sm p-4 flex flex-col justify-center mx-auto my-16 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-gray-800 dark:border-gray-700">
       <h5 className="mb-3 text-base font-semibold text-center text-gray-900 md:text-xl dark:text-white">
