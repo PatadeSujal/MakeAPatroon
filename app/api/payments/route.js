@@ -20,8 +20,8 @@ export async function POST(req) {
       name: res.name,
       amount: res.amount * 100,
       message: res.message,
-      redirectUrl: `http://localhost:3000/api/status/?id=${res.transactionId}`,
-      callbackUrl: `http://localhost:3000/api/status/?id=${res.transactionId}`,
+      redirectUrl: `${NEXT_PUBLIC_BASE_URL}/api/status/?id=${res.transactionId}`,
+      callbackUrl: `${NEXT_PUBLIC_BASE_URL}/api/status/?id=${res.transactionId}`,
       redirectMode: "POST",
       mobileNumber: res.mobileNo,
       paymentInstrument: {
