@@ -31,7 +31,10 @@ const PaymentForm =  ({accHoldername}) => {
     };
 
     try {
-      const res = await axios.post("http://localhost:3000/api/payments", data);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments`,
+        data
+      );
       console.log("response ", res.data);
       // Assuming the API returns a URL in res.data.url
       router.push(res.data);
